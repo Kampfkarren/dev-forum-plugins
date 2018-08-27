@@ -1,0 +1,5 @@
+plugins:
+  new_member_lock_minimum_tl:
+    default: 3
+    client: true
+    enum: 'TrustLevelSetting'
