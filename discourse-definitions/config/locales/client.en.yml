@@ -1,0 +1,10 @@
+en:
+  js:
+    discourse_definitions:
+      definition: "Definition"
+      delete: "Delete"
+      title: "Glossary"
+      word: "Word"
+      new: "Define"
+      new_definition: "New Definition"
+      new_word: "New Word"

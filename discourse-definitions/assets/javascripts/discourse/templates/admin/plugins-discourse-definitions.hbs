@@ -1,0 +1,20 @@
+{{input value=new_word placeholderKey="discourse_definitions.new_word"}}
+{{d-editor value=new_definition placeholder="discourse_definitions.new_definition"}}
+{{d-button icon="plus" action="new" label="discourse_definitions.new"}}
+
+<table class="grid">
+	<thead>
+		<th>{{i18n 'discourse_definitions.word'}}</th>
+		<th>{{i18n 'discourse_definitions.definition'}}</th>
+	</thead>
+
+	<tbody>
+		{{#each-in definitions as |name definition|}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{cook-text definition}}</td>
+				<td>{{d-button icon="trash-o" action="delete" actionParam=name label="discourse_definitions.delete"}}</td>
+			</tr>
+		{{/each-in}}
+	</tbody>
+</table>

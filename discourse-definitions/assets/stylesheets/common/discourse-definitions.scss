@@ -1,0 +1,14 @@
+.discourse-definitions-definition {
+	cursor: pointer;
+	text-decoration-line: underline;
+	text-decoration-style: dotted;
+}
+
+.discourse-definitions-tooltip {
+	background: #3498db;
+	border-radius: 1%;
+	max-width: 200px;
+	padding: 1%;
+	position: absolute;
+	z-index: 1000;
+}
