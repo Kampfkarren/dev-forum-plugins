@@ -1,0 +1,15 @@
+{{#d-modal-body rawTitle=name autoFocus="false"}}
+	{{cook-text definition}}
+{{/d-modal-body}}
+
+<div class="modal-footer">
+  {{d-button class="btn-primary"
+      disabled=saveDisabled
+      label="discourse_definitions.modal.ok"
+      action="closeModal"}}
+
+  <label>
+    {{input type="checkbox" checked=user.custom_fields.disable_definitions}}
+    {{i18n "discourse_definitions.dont_show_me_again"}}
+  </label>
+</div>

@@ -1,5 +1,5 @@
-import { cookAsync } from "discourse/lib/text";
-import { withPluginApi } from "discourse/lib/plugin-api";
+import showModal from "discourse/lib/show-modal"
+import { withPluginApi } from "discourse/lib/plugin-api"
 
 const MARGIN_BOTTOM = 15
 const REMOVE_OLD_HTML = /<span class="discourse-definitions-definition" data-name="[^"]+">([^<]+)<\/span>/g
@@ -23,26 +23,37 @@ export default {
 		$(document).on("click", ".discourse-definitions-definition", function(event){
 			event.stopPropagation()
 			let name = $(this).attr("data-name")
-			let offset = $(this).offset()
-			let definition = names[name]
-			cookAsync(definition).then(cookedDefinition => {
-				tooltip.html(`<b>${name}</b><br>`)
-				tooltip.append(cookedDefinition.string)
-				tooltip.show()
-				tooltip.css("top", `${offset.top + MARGIN_BOTTOM}px`)
-				tooltip.css("left", `${offset.left}px`)
-			})
+			let definition = names.find((definition) => definition.word === name && definition.locale === I18n.locale)
+			let modal = showModal("definition-modal")
+			modal.set("name", name)
+			modal.set("definition", definition.definition)
 		})
 
 		withPluginApi("0.8.24", api => {
 			api.decorateCooked($elem => {
-				for(let name in names) {
-					$elem.find(`*:contains('${$.escapeSelector(name)}')`).html((_, html) => {
-						// HACK: For whatever reason, the old HTML persists
-						html = html.replace(REMOVE_OLD_HTML, "$1")
-						html = html.replace(new RegExp(`\\b(${regexEscape(name)})\\b`, "gi"), `<span class="discourse-definitions-definition" data-name="${name}">$1</span>`)
-						return html
-					})
+				if(api.getCurrentUser().get("custom_fields").disable_definitions) {
+					return
+				}
+
+				for(let definition of names) {
+					let name = definition.word
+					if(definition.locale === I18n.locale) {
+						$elem.find(`*:contains('${$.escapeSelector(name)}')`).html((_, html) => {
+							// HACK: For whatever reason, the old HTML persists
+							html = html.replace(REMOVE_OLD_HTML, "$1")
+							html = html.replace(new RegExp(`\\b(${regexEscape(name)})\\b`, "gi"), `<span class="discourse-definitions-definition" data-name="${name}">$1</span>`)
+							return html
+						})
+					}
+				}
+			})
+
+			api.modifyClass("controller:preferences/interface", {
+				actions: {
+					save() {
+						this.get("saveAttrNames").push("custom_fields")
+						this._super()
+					}
 				}
 			})
 		})
