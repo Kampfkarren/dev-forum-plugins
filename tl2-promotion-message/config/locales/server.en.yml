@@ -1,0 +1,9 @@
+en:
+  system_messages:
+    welcome_tl2_user:
+      title: "Welcome TL2 User"
+      subject_template: "You've been promoted to Member!"
+      text_body_template: |
+        Congratulations! You've been promoted to Member!
+
+        Say, DevRel should be writing this message shouldn't they?
