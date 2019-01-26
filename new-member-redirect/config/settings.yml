@@ -1,0 +1,9 @@
+plugins:
+  new_member_prohibited_category:
+    type: category
+    default: ''
+  new_member_redirect_to:
+    type: category
+    default: ''
+  lead_top_contributors:
+    default: 'Lead_Top_Contributor'

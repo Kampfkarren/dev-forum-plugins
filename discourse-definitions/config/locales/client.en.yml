@@ -1,0 +1,16 @@
+en:
+  js:
+    discourse_definitions:
+      definition: "Definition"
+      delete: "Delete"
+      disable_definitions: "Disable word highlighting for jargon"
+      dont_show_me_again: "Don't higlight definitions for me"
+      edit: "Edit"
+      language: "Language"
+      title: "Glossary"
+      word: "Word"
+      new: "Define"
+      new_definition: "New Definition"
+      new_word: "New Word"
+      modal:
+        ok: "Ok"

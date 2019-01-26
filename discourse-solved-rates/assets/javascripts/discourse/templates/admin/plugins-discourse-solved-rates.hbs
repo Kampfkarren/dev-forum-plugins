@@ -1,0 +1,27 @@
+<div class="control-group date">
+	<label class="control-label">
+		{{i18n "discourse_solved_rates.start_date"}}
+	</label>
+
+	<div class="controls">
+		{{date-picker-past value=start_date}}
+	</div>
+</div>
+
+<div class="control-group date">
+	<label class="control-label">
+		{{i18n "discourse_solved_rates.end_date"}}
+	</label>
+
+	<div class="controls">
+		{{date-picker-past value=end_date}}
+	</div>
+</div>
+
+{{category-chooser value=category}}<br>
+
+{{d-button class="btn-primary" action="submit" label="discourse_solved_rates.get_rates"}}
+
+{{#if hasRate}}
+	<h1>{{rate}}% of posts have solutions</h1>
+{{/if}}

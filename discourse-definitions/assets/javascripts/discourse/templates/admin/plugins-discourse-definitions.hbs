@@ -1,0 +1,24 @@
+{{input value=new_word placeholderKey="discourse_definitions.new_word"}}
+{{d-editor value=new_definition placeholder="discourse_definitions.new_definition"}}
+{{combo-box filterable=true valueAttribute="value" content=availableLocales value=new_locale none="user.locale.default"}}
+{{d-button icon="plus" action="new" label="discourse_definitions.new"}}
+
+<table class="grid">
+	<thead>
+		<th>{{i18n "discourse_definitions.word"}}</th>
+		<th>{{i18n "discourse_definitions.definition"}}</th>
+		<th>{{i18n "discourse_definitions.language"}}</th>
+	</thead>
+
+	<tbody>
+		{{#each definitions as |definition|}}
+			<tr>
+				<td>{{definition.word}}</td>
+				<td>{{cook-text definition.definition}}</td>
+				<td>{{definition.locale}}</td>
+				<td>{{d-button icon="far-trash-alt" action="delete" actionParam=(hash word=definition.word locale=definition.locale) label="discourse_definitions.delete"}}</td>
+				<td>{{d-button icon="pencil" action="edit" actionParam=(hash word=definition.word locale=definition.locale) label="discourse_definitions.edit"}}</td>
+			</tr>
+		{{/each}}
+	</tbody>
+</table>
