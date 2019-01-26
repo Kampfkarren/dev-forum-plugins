@@ -1,8 +1,0 @@
-en:
-  js:
-    action_codes:
-      closed_to_new_member_true: "Topic was locked from new members."
-      closed_to_new_member_false: "Topic was unlocked from new members."
-    new_member_lock:
-      button_label_lock: "Lock from New Members"
-      button_label_unlock: "Unlock from New Members"

@@ -1,7 +1,0 @@
-en:
-  js:
-    discourse_solved_rates:
-      title: "Solution Rates"
-      start_date: "Start Date"
-      end_date: "End Date"
-      get_rates: "Get Rates"
